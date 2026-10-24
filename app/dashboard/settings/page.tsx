@@ -25,23 +25,23 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6 max-w-4xl">
-      <div className="pb-4 border-b-2 border-[#0F0F12]">
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-black uppercase tracking-tight text-[#0F0F12]">
+      <div className="pb-2">
+        <div className="flex items-center gap-2.5">
+          <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
             Salon Configuration
           </h1>
-          <span className="text-[10px] font-black uppercase bg-[#0F0F12] text-amber-400 px-2 py-0.5 rounded shadow-neo-sm">
+          <span className="text-[10px] font-bold uppercase bg-gradient-to-r from-amber-400 to-amber-500 text-stone-950 px-3 py-1 rounded-full shadow-clay-amber">
             PRO TIER
           </span>
         </div>
-        <p className="text-xs font-bold text-neutral-600 mt-1">
+        <p className="text-xs font-medium text-stone-500 mt-1">
           Shop credentials, public booking link slug, timezone synchronization, and tenant isolation keys.
         </p>
       </div>
 
       {savedFeedback && (
-        <div className="flex items-center gap-3 rounded-2xl border-2 border-black bg-emerald-300 p-3.5 text-xs font-black uppercase text-black shadow-neo">
-          <Check className="h-5 w-5 text-black stroke-[3]" />
+        <div className="flex items-center gap-3 rounded-2xl bg-emerald-100/90 text-emerald-900 p-4 text-xs font-bold shadow-clay-inset">
+          <Check className="h-5 w-5 text-emerald-700 stroke-[3]" />
           <span>Salon configuration saved successfully.</span>
         </div>
       )}
@@ -49,19 +49,23 @@ export default function SettingsPage() {
       {/* Business Details Form */}
       <form onSubmit={handleSave} className="space-y-6">
         <Card>
-          <CardHeader className="border-b-2 border-[#0F0F12] pb-4">
-            <div className="flex items-center gap-2">
-              <Store className="h-5 w-5 text-amber-600 stroke-[2.5]" />
-              <CardTitle className="text-base uppercase font-black">Shop Profile &amp; Branding</CardTitle>
+          <CardHeader className="border-b border-stone-200/60 pb-4">
+            <div className="flex items-center gap-2.5">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center shadow-clay-amber">
+                <Store className="h-4 w-4 stroke-[2.5]" />
+              </div>
+              <div>
+                <CardTitle className="text-base font-bold text-stone-900">Shop Profile &amp; Branding</CardTitle>
+                <CardDescription className="text-xs text-stone-500">
+                  Basic information visible to your clients during online booking.
+                </CardDescription>
+              </div>
             </div>
-            <CardDescription>
-              Basic information visible to your clients during online booking.
-            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   Barbershop Name
                 </label>
                 <Input
@@ -72,17 +76,17 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   Public Booking Slug
                 </label>
                 <div className="flex items-center">
-                  <span className="inline-flex h-11 items-center px-3.5 rounded-l-xl border-2 border-r-0 border-[#0F0F12] bg-[#FAF8F5] text-xs font-bold text-neutral-700">
+                  <span className="inline-flex h-11 items-center px-3.5 rounded-l-2xl bg-[#EBE5DE] text-xs font-semibold text-stone-600 shadow-clay-inset border-r border-stone-300">
                     barberflow.io/
                   </span>
                   <input
                     readOnly
                     value={mockSalon.slug}
-                    className="flex-1 h-11 rounded-r-xl border-2 border-[#0F0F12] bg-neutral-100 px-3 text-xs font-bold text-neutral-600 focus:outline-none cursor-not-allowed shadow-neo-sm"
+                    className="flex-1 h-11 rounded-r-2xl bg-[#EFECE6] border-0 px-3 text-xs font-bold text-stone-500 shadow-clay-inset focus:outline-none cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -90,7 +94,7 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   Contact Phone
                 </label>
                 <Input
@@ -101,7 +105,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   Contact Email
                 </label>
                 <Input
@@ -115,7 +119,7 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   Street Address
                 </label>
                 <Input
@@ -126,7 +130,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                   City &amp; Region
                 </label>
                 <Input
@@ -137,8 +141,8 @@ export default function SettingsPage() {
               </div>
             </div>
           </CardContent>
-          <CardFooter className="justify-end border-t-2 border-[#0F0F12] pt-4">
-            <Button variant="gold" type="submit" size="sm" className="uppercase font-black">
+          <CardFooter className="justify-end border-t border-stone-200/60 pt-4">
+            <Button variant="gold" type="submit" size="sm" className="font-bold">
               Save Profile Changes
             </Button>
           </CardFooter>
@@ -146,24 +150,28 @@ export default function SettingsPage() {
 
         {/* Localization & Currency */}
         <Card>
-          <CardHeader className="border-b-2 border-[#0F0F12] pb-4">
-            <div className="flex items-center gap-2">
-              <Globe className="h-5 w-5 text-amber-600 stroke-[2.5]" />
-              <CardTitle className="text-base uppercase font-black">Localization &amp; Currency</CardTitle>
+          <CardHeader className="border-b border-stone-200/60 pb-4">
+            <div className="flex items-center gap-2.5">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center shadow-clay-amber">
+                <Globe className="h-4 w-4 stroke-[2.5]" />
+              </div>
+              <div>
+                <CardTitle className="text-base font-bold text-stone-900">Localization &amp; Currency</CardTitle>
+                <CardDescription className="text-xs text-stone-500">
+                  Timezone scheduling synchronization and display currency formatting.
+                </CardDescription>
+              </div>
             </div>
-            <CardDescription>
-              Timezone scheduling synchronization and display currency formatting.
-            </CardDescription>
           </CardHeader>
           <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Shop Timezone
               </label>
               <select
                 value={timezone}
                 onChange={(e) => setTimezone(e.target.value)}
-                className="w-full h-11 rounded-xl border-2 border-[#0F0F12] bg-white px-3 text-xs font-bold text-[#0F0F12] shadow-neo-sm focus:outline-none"
+                className="w-full h-11 rounded-2xl bg-[#EFECE6] border border-white/60 px-3 text-xs font-medium text-stone-800 shadow-[inset_2px_2px_5px_rgba(166,155,142,0.3),inset_-2px_-2px_5px_rgba(255,255,255,0.85)] focus:outline-none"
               >
                 <option value="America/New_York">Eastern Time (US - New York)</option>
                 <option value="America/Chicago">Central Time (US - Chicago)</option>
@@ -177,13 +185,13 @@ export default function SettingsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Billing &amp; Menu Currency
               </label>
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full h-11 rounded-xl border-2 border-[#0F0F12] bg-white px-3 text-xs font-bold text-[#0F0F12] shadow-neo-sm focus:outline-none"
+                className="w-full h-11 rounded-2xl bg-[#EFECE6] border border-white/60 px-3 text-xs font-medium text-stone-800 shadow-[inset_2px_2px_5px_rgba(166,155,142,0.3),inset_-2px_-2px_5px_rgba(255,255,255,0.85)] focus:outline-none"
               >
                 <option value="USD">USD ($) — US Dollar</option>
                 <option value="EUR">EUR (€) — Euro</option>
@@ -196,46 +204,46 @@ export default function SettingsPage() {
         </Card>
 
         {/* Multi-Tenancy & Data Architecture Card */}
-        <Card className="border-4 border-[#0F0F12] bg-[#0F0F12] text-white shadow-neo-xl">
-          <CardHeader className="border-b border-white/20 pb-4">
-            <div className="flex items-center gap-2">
-              <Database className="h-5 w-5 text-amber-400 stroke-[2.5]" />
-              <CardTitle className="text-base uppercase font-black text-white">Multi-Tenancy Isolation Protocol</CardTitle>
+        <div className="rounded-3xl clay-card-dark p-6 space-y-4">
+          <div className="flex items-center gap-3 pb-4 border-b border-white/10">
+            <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center font-bold shadow-clay-amber">
+              <Database className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <CardDescription className="text-neutral-400">
-              Cryptographic tenant boundary for Crown &amp; Blade Club.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-xs font-bold pt-6">
-            <div className="rounded-xl bg-black/60 p-4 border border-white/20 space-y-2">
+            <div>
+              <h3 className="text-base font-extrabold text-stone-100">Multi-Tenancy Isolation Protocol</h3>
+              <p className="text-xs text-stone-400">Cryptographic tenant boundary for Crown &amp; Blade Club.</p>
+            </div>
+          </div>
+          <div className="space-y-3 text-xs font-medium pt-2">
+            <div className="rounded-2xl bg-black/40 p-4 border border-white/10 space-y-2.5 shadow-clay-inset">
               <div className="flex justify-between items-center">
-                <span className="text-neutral-400 uppercase">Tenant Partition (`salon_id`):</span>
-                <code className="bg-amber-400 text-black px-2.5 py-0.5 rounded border border-black font-mono text-[11px] font-black">
+                <span className="text-stone-400 uppercase text-[10px] font-bold">Tenant Partition (`salon_id`):</span>
+                <code className="bg-amber-400 text-stone-950 px-3 py-1 rounded-full font-mono text-[11px] font-extrabold shadow-clay-amber">
                   {mockSalon.id}
                 </code>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-neutral-400 uppercase">Active Subscription:</span>
-                <span className="font-black text-emerald-400 uppercase text-[10px] bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500">
+                <span className="text-stone-400 uppercase text-[10px] font-bold">Active Subscription:</span>
+                <span className="font-bold text-emerald-400 uppercase text-[10px] bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-500/40">
                   {mockSalon.tier} Plan (Active)
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-neutral-400 uppercase">Supabase RLS Policy:</span>
-                <span className="text-amber-400">
+                <span className="text-stone-400 uppercase text-[10px] font-bold">Supabase RLS Policy:</span>
+                <span className="text-amber-400 font-bold">
                   Strict Row Level Security Active
                 </span>
               </div>
             </div>
 
-            <div className="flex items-start gap-2 text-neutral-400 pt-1">
+            <div className="flex items-start gap-2.5 text-stone-400 pt-2 text-xs">
               <Shield className="h-4 w-4 mt-0.5 text-amber-400 flex-shrink-0" />
               <span>
                 All bookings, financial totals, and customer phone numbers are isolated by this <code>salon_id</code>.
               </span>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </form>
     </div>
   );

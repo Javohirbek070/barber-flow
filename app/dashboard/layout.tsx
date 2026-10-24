@@ -14,7 +14,7 @@ export default function DashboardLayout({
   const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
 
   return (
-    <div className="flex h-screen bg-[#FAF8F5] overflow-hidden text-[#0F0F12]">
+    <div className="flex h-screen bg-[#F3EFEA] overflow-hidden text-stone-900">
       {/* Desktop Sidebar */}
       <DashboardSidebar className="hidden lg:flex flex-shrink-0" />
 

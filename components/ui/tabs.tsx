@@ -44,7 +44,7 @@ export function TabsList({
   return (
     <div
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-xl bg-[#F5F5F5] p-1 text-neutral-500 border border-[#E5E5E5]",
+        "inline-flex h-12 items-center justify-center rounded-2xl bg-[#EBE7E1] p-1.5 shadow-[inset_3px_3px_6px_rgba(166,155,142,0.28),inset_-3px_-3px_6px_rgba(255,255,255,0.9)] border border-white/60",
         className
       )}
     >
@@ -74,10 +74,10 @@ export function TabsTrigger({
       aria-selected={isSelected}
       onClick={() => context.onValueChange(value)}
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-all select-none focus-visible:outline-none",
         isSelected
-          ? "bg-white text-[#171717] shadow-sm font-semibold"
-          : "text-neutral-600 hover:text-[#171717]",
+          ? "bg-white text-[#1E202B] shadow-clay-sm scale-[1.02] border border-white"
+          : "text-neutral-500 hover:text-[#1E202B]",
         className
       )}
     >
@@ -100,5 +100,5 @@ export function TabsContent({
 
   if (context.value !== value) return null;
 
-  return <div className={cn("mt-4 focus-visible:outline-none", className)}>{children}</div>;
+  return <div className={cn("mt-5 focus-visible:outline-none", className)}>{children}</div>;
 }

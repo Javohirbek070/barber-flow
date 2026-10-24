@@ -14,7 +14,7 @@ function getActivityIcon(type: ActivityItem["type"]) {
     case "booking_cancelled":
       return <XCircle className="h-4 w-4 text-red-600 stroke-[2.5]" />;
     default:
-      return <CheckCircle2 className="h-4 w-4 text-neutral-500" />;
+      return <CheckCircle2 className="h-4 w-4 text-stone-500" />;
   }
 }
 
@@ -24,30 +24,30 @@ export function RecentActivitySection({
   activities: ActivityItem[];
 }) {
   return (
-    <Card className="hover:shadow-neo-lg transition-all">
-      <CardHeader className="pb-3 border-b-2 border-[#0F0F12]">
+    <Card className="hover:shadow-clay-hover transition-all duration-200">
+      <CardHeader className="pb-4 border-b border-stone-200/60">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-sm font-black uppercase tracking-wider text-[#0F0F12]">
+          <CardTitle className="text-sm font-bold uppercase tracking-wider text-stone-800">
             Live Shop Activity Feed
           </CardTitle>
-          <span className="text-[10px] font-black uppercase bg-[#0F0F12] text-amber-400 px-2 py-0.5 rounded shadow-neo-sm">
+          <span className="text-[10px] font-bold uppercase bg-stone-900 text-amber-400 px-2.5 py-1 rounded-full shadow-clay-dark">
             REAL-TIME
           </span>
         </div>
       </CardHeader>
-      <CardContent className="pt-4">
-        <div className="space-y-3.5">
+      <CardContent className="pt-5">
+        <div className="space-y-4">
           {activities.map((item) => (
-            <div key={item.id} className="flex items-start gap-3 text-xs">
-              <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-white border-2 border-[#0F0F12] shadow-neo-sm">
+            <div key={item.id} className="flex items-start gap-3.5 text-xs">
+              <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-2xl bg-white/90 border border-white/80 shadow-clay-sm">
                 {getActivityIcon(item.type)}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-neutral-900 leading-snug font-extrabold">
+                <p className="text-stone-900 leading-snug font-bold">
                   {item.message}
                 </p>
-                <div className="flex items-center gap-2 mt-1 text-neutral-500 text-[10px] font-bold">
-                  <span className="text-amber-700">{item.timestamp}</span>
+                <div className="flex items-center gap-2 mt-1 text-stone-400 text-[10px] font-medium">
+                  <span className="text-amber-700 font-bold">{item.timestamp}</span>
                   <span>•</span>
                   <span>{item.actor}</span>
                 </div>

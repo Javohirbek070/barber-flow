@@ -14,40 +14,40 @@ export default function BookingsPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0F0F12]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black uppercase tracking-tight text-[#0F0F12]">
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
               Appointments &amp; Timeline
             </h1>
-            <span className="text-[10px] font-black uppercase bg-[#0F0F12] text-amber-400 px-2 py-0.5 rounded shadow-neo-sm">
+            <span className="text-[10px] font-bold uppercase bg-stone-900 text-amber-400 px-2.5 py-1 rounded-full shadow-clay-dark">
               Live Chairs
             </span>
           </div>
-          <p className="text-xs font-bold text-neutral-600 mt-1">
+          <p className="text-xs font-medium text-stone-500 mt-1">
             Chair allocations, calendar timelines, and live walk-in queue management.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           {/* View toggle */}
-          <div className="flex items-center rounded-xl bg-white border-2 border-[#0F0F12] p-1 shadow-neo-sm">
+          <div className="flex items-center p-1.5 rounded-2xl bg-[#EBE5DE] shadow-clay-inset">
             <button
               onClick={() => setViewMode("list")}
-              className={`px-3 py-1.5 text-xs rounded-lg font-black uppercase tracking-wider transition-all ${
+              className={`px-3.5 py-1.5 text-xs rounded-xl font-bold transition-all ${
                 viewMode === "list"
-                  ? "bg-[#0F0F12] text-amber-400 shadow-neo-sm"
-                  : "text-neutral-700 hover:text-black"
+                  ? "bg-stone-900 text-amber-400 shadow-clay-dark"
+                  : "text-stone-600 hover:text-stone-900 hover:bg-white/40"
               }`}
             >
               Chair Slips
             </button>
             <button
               onClick={() => setViewMode("calendar")}
-              className={`px-3 py-1.5 text-xs rounded-lg font-black uppercase tracking-wider transition-all ${
+              className={`px-3.5 py-1.5 text-xs rounded-xl font-bold transition-all ${
                 viewMode === "calendar"
-                  ? "bg-[#0F0F12] text-amber-400 shadow-neo-sm"
-                  : "text-neutral-700 hover:text-black"
+                  ? "bg-stone-900 text-amber-400 shadow-clay-dark"
+                  : "text-stone-600 hover:text-stone-900 hover:bg-white/40"
               }`}
             >
               Chair Timeline
@@ -57,11 +57,13 @@ export default function BookingsPage() {
       </div>
 
       {/* Date Navigation Bar */}
-      <div className="flex items-center justify-between rounded-2xl border-2 border-[#0F0F12] bg-white p-3.5 shadow-neo">
-        <div className="flex items-center gap-2">
-          <CalendarIcon className="h-4 w-4 text-amber-600 stroke-[2.5]" />
-          <span className="text-xs font-black uppercase tracking-wider text-[#0F0F12]">
-            Schedule Date: {selectedDate} (Wednesday, Oct 21)
+      <div className="flex items-center justify-between rounded-3xl clay-card p-4">
+        <div className="flex items-center gap-2.5">
+          <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center shadow-clay-amber">
+            <CalendarIcon className="h-4 w-4 stroke-[2.5]" />
+          </div>
+          <span className="text-xs font-bold text-stone-900">
+            Schedule Date: <span className="font-extrabold text-amber-700">{selectedDate}</span> (Wednesday, Oct 21)
           </span>
         </div>
 
@@ -69,7 +71,7 @@ export default function BookingsPage() {
           <Button
             size="sm"
             variant="outline"
-            className="h-8 px-2"
+            className="h-8 w-8 p-0 rounded-xl"
             onClick={() => setSelectedDate("Yesterday")}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -77,7 +79,7 @@ export default function BookingsPage() {
           <Button
             size="sm"
             variant="gold"
-            className="h-8 text-xs px-3 uppercase font-black"
+            className="h-8 text-xs px-3 font-bold"
             onClick={() => setSelectedDate("Today")}
           >
             Today
@@ -85,7 +87,7 @@ export default function BookingsPage() {
           <Button
             size="sm"
             variant="outline"
-            className="h-8 px-2"
+            className="h-8 w-8 p-0 rounded-xl"
             onClick={() => setSelectedDate("Tomorrow")}
           >
             <ChevronRight className="h-4 w-4" />
@@ -100,30 +102,30 @@ export default function BookingsPage() {
         </div>
       ) : (
         /* Calendar Prototype View */
-        <Card className="shadow-neo-lg">
+        <Card>
           <CardContent className="p-6">
-            <div className="flex items-center justify-between pb-4 border-b-2 border-[#0F0F12] mb-4">
+            <div className="flex items-center justify-between pb-4 border-b border-stone-200/60 mb-5">
               <div>
-                <h3 className="text-sm font-black uppercase text-[#0F0F12]">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-stone-800">
                   Multi-Chair Matrix &amp; Timeline Board
                 </h3>
-                <p className="text-xs font-bold text-neutral-500">
+                <p className="text-xs font-medium text-stone-500">
                   Live station timeline across 4 barbers
                 </p>
               </div>
-              <span className="text-[10px] font-black uppercase bg-amber-400 text-black px-2.5 py-1 rounded-md border border-black shadow-neo-sm">
+              <span className="text-[10px] font-bold uppercase bg-gradient-to-r from-amber-400 to-amber-500 text-stone-950 px-3 py-1 rounded-full shadow-clay-amber">
                 Timeline Matrix
               </span>
             </div>
 
             {/* Time columns across Barbers */}
             <div className="overflow-x-auto">
-              <div className="min-w-[700px]">
+              <div className="min-w-[700px] space-y-2">
                 {/* Header row: Barbers */}
-                <div className="grid grid-cols-5 gap-2 border-b-2 border-[#0F0F12] pb-3 text-xs font-black uppercase text-neutral-800">
-                  <div className="text-amber-600">Time Slot</div>
+                <div className="grid grid-cols-5 gap-3 pb-3 text-xs font-bold uppercase text-stone-700 border-b border-stone-200/60">
+                  <div className="text-amber-700 flex items-center">Time Slot</div>
                   {mockBarbers.map((b) => (
-                    <div key={b.id} className="truncate bg-neutral-100 p-2 rounded-xl border border-black">
+                    <div key={b.id} className="truncate clay-inset-surface p-2.5 rounded-2xl text-center text-stone-800">
                       ★ {b.name}
                     </div>
                   ))}
@@ -140,9 +142,9 @@ export default function BookingsPage() {
                 ].map((row, idx) => (
                   <div
                     key={idx}
-                    className="grid grid-cols-5 gap-2 py-3 border-b border-[#0F0F12] text-xs items-center font-bold"
+                    className="grid grid-cols-5 gap-3 py-2 text-xs items-center"
                   >
-                    <div className="font-black text-[#0F0F12] text-xs">
+                    <div className="font-extrabold text-stone-800 text-xs">
                       {row.time}
                     </div>
                     {row.slots.map((slot, sIdx) => {
@@ -152,12 +154,12 @@ export default function BookingsPage() {
                       return (
                         <div
                           key={sIdx}
-                          className={`p-2.5 rounded-xl text-xs truncate border-2 ${
+                          className={`p-3 rounded-2xl text-xs truncate font-bold transition-all ${
                             isBooked
-                              ? "bg-[#0F0F12] text-amber-400 font-black border-[#0F0F12] shadow-neo-sm"
+                              ? "bg-gradient-to-br from-stone-900 to-stone-800 text-amber-400 shadow-clay-dark"
                               : isLunch
-                              ? "bg-neutral-200 text-neutral-600 border-neutral-400"
-                              : "bg-[#FAF8F5] text-neutral-500 border-dashed border-neutral-400 hover:border-black"
+                              ? "bg-stone-200/70 text-stone-500 shadow-clay-inset"
+                              : "clay-inset-surface text-stone-400 hover:text-stone-700 hover:shadow-clay-sm"
                           }`}
                         >
                           {slot}

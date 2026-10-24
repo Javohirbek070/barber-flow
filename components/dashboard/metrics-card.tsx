@@ -22,28 +22,30 @@ export function MetricCard({
   trend,
 }: MetricCardProps) {
   return (
-    <Card className="hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-neo-lg transition-all">
-      <CardContent className="p-5">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1.5">
-            <span className="text-xs font-black uppercase tracking-wider text-[#0F0F12]">
+    <Card className="hover:shadow-clay-hover transition-all duration-200">
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
               {title}
             </span>
             <MockMetricIndicator />
           </div>
-          <div className="h-9 w-9 rounded-xl bg-[#0F0F12] border-2 border-[#0F0F12] flex items-center justify-center text-amber-400 shadow-neo-sm">
-            <Icon className="h-4 w-4" />
+          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center shadow-clay-amber">
+            <Icon className="h-5 w-5 stroke-[2.5]" />
           </div>
         </div>
 
-        <div className="flex items-baseline justify-between">
-          <div className="text-3xl sm:text-4xl font-black tracking-tight text-[#0F0F12]">
+        <div className="flex items-baseline justify-between gap-2">
+          <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-900">
             {value}
           </div>
           {trend && (
             <span
-              className={`text-[11px] font-black uppercase px-2 py-0.5 rounded border border-black ${
-                trend.isPositive ? "bg-emerald-300 text-black" : "bg-neutral-200 text-neutral-800"
+              className={`text-[11px] font-bold px-2.5 py-1 rounded-full shadow-clay-inset ${
+                trend.isPositive
+                  ? "bg-emerald-100/80 text-emerald-800 shadow-[inset_1px_1px_3px_rgba(16,185,129,0.3)]"
+                  : "bg-stone-200/70 text-stone-700"
               }`}
             >
               {trend.value}
@@ -51,7 +53,7 @@ export function MetricCard({
           )}
         </div>
 
-        <p className="mt-2 text-xs font-bold text-neutral-600">{subtitle}</p>
+        <p className="mt-2 text-xs font-medium text-stone-500">{subtitle}</p>
       </CardContent>
     </Card>
   );

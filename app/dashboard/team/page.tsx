@@ -58,17 +58,17 @@ export default function TeamPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0F0F12]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black uppercase tracking-tight text-[#0F0F12]">
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
               Team &amp; Barbers Roster
             </h1>
-            <span className="text-[10px] font-black uppercase bg-emerald-400 text-black px-2 py-0.5 rounded border border-black shadow-neo-sm">
+            <span className="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full shadow-clay-inset">
               4 Chairs Manned
             </span>
           </div>
-          <p className="text-xs font-bold text-neutral-600 mt-1">
+          <p className="text-xs font-medium text-stone-500 mt-1">
             Chair allocations, master credentials, daily booking load, and barber commission levels.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function TeamPage() {
           variant="gold"
           size="sm"
           onClick={() => setIsAddModalOpen(true)}
-          className="gap-2 self-start sm:self-auto uppercase font-black text-xs shadow-neo-sm"
+          className="gap-2 self-start sm:self-auto font-bold text-xs"
         >
           <Plus className="h-4 w-4 stroke-[3]" />
           <span>Add Master Barber</span>
@@ -85,8 +85,8 @@ export default function TeamPage() {
       </div>
 
       {successToast && (
-        <div className="flex items-center gap-3 rounded-2xl border-2 border-black bg-emerald-300 p-3.5 text-xs font-black uppercase text-black shadow-neo">
-          <Check className="h-5 w-5 text-black stroke-[3]" />
+        <div className="flex items-center gap-3 rounded-2xl bg-emerald-100/90 text-emerald-900 p-4 text-xs font-bold shadow-clay-inset">
+          <Check className="h-5 w-5 text-emerald-700 stroke-[3]" />
           <span>{successToast}</span>
         </div>
       )}
@@ -96,16 +96,16 @@ export default function TeamPage() {
         {barbers.map((barber) => (
           <div
             key={barber.id}
-            className={`rounded-2xl border-2 border-[#0F0F12] p-5 bg-white shadow-neo transition-all flex flex-col justify-between ${
+            className={`rounded-3xl p-6 clay-card transition-all flex flex-col justify-between ${
               barber.isActive
-                ? "hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-neo-lg"
-                : "opacity-60 bg-neutral-100"
+                ? "hover:shadow-clay-hover"
+                : "opacity-60 bg-stone-100"
             }`}
           >
             <div>
               <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-14 w-14 rounded-2xl bg-[#0F0F12] text-amber-400 flex items-center justify-center font-black text-lg border-2 border-[#0F0F12] shadow-neo-sm">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-stone-900 to-stone-800 text-amber-400 flex items-center justify-center font-extrabold text-lg shadow-clay-dark">
                     {barber.name
                       .split(" ")
                       .map((n) => n[0])
@@ -113,7 +113,7 @@ export default function TeamPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-black uppercase tracking-tight text-[#0F0F12]">
+                      <h3 className="text-lg font-extrabold tracking-tight text-stone-900">
                         {barber.name}
                       </h3>
                       {barber.role === "owner" ? (
@@ -127,7 +127,7 @@ export default function TeamPage() {
                         </Badge>
                       )}
                     </div>
-                    <p className="text-xs font-bold text-amber-700 flex items-center gap-1 mt-0.5">
+                    <p className="text-xs font-medium text-amber-700 flex items-center gap-1 mt-0.5">
                       <Scissors className="h-3.5 w-3.5 stroke-[2.5]" />
                       <span>{barber.appointmentsToday} appointments scheduled today</span>
                     </p>
@@ -136,10 +136,10 @@ export default function TeamPage() {
 
                 <button
                   onClick={() => toggleBarberActive(barber.id)}
-                  className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-lg border-2 border-black shadow-neo-sm transition-all ${
+                  className={`text-[10px] font-bold uppercase px-3 py-1 rounded-full shadow-clay-inset transition-all ${
                     barber.isActive
-                      ? "text-black bg-emerald-400 hover:bg-emerald-300"
-                      : "text-neutral-600 bg-neutral-200"
+                      ? "text-emerald-800 bg-emerald-100 hover:bg-emerald-200"
+                      : "text-stone-500 bg-stone-200"
                   }`}
                 >
                   {barber.isActive ? "On Duty" : "Shift Off"}
@@ -147,27 +147,27 @@ export default function TeamPage() {
               </div>
 
               {/* Contact details */}
-              <div className="mt-4 pt-3 border-t-2 border-[#0F0F12] space-y-1.5 text-xs font-bold text-neutral-800">
+              <div className="mt-4 pt-4 border-t border-stone-200/60 space-y-2 text-xs font-medium text-stone-600">
                 <div className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 text-neutral-500" />
+                  <Mail className="h-3.5 w-3.5 text-stone-400" />
                   <span>{barber.email}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 text-neutral-500" />
+                  <Phone className="h-3.5 w-3.5 text-stone-400" />
                   <span>{barber.phone}</span>
                 </div>
               </div>
 
               {/* Specialties */}
-              <div className="mt-4 pt-3 border-t-2 border-[#0F0F12]">
-                <span className="text-[10px] font-black uppercase tracking-wider text-neutral-500 block mb-2">
+              <div className="mt-4 pt-3 border-t border-stone-200/60">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-2">
                   Master Specialties &amp; Techniques
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {barber.specialties.map((spec, i) => (
                     <span
                       key={i}
-                      className="rounded-lg bg-amber-100 border border-black px-2.5 py-1 text-[11px] font-black text-[#0F0F12]"
+                      className="rounded-full bg-amber-100/80 text-amber-900 px-3 py-1 text-[11px] font-bold shadow-clay-inset"
                     >
                       ★ {spec}
                     </span>
@@ -184,7 +184,7 @@ export default function TeamPage() {
         <DialogClose onClose={() => setIsAddModalOpen(false)} />
         <DialogHeader>
           <div className="flex items-center gap-2 mb-1">
-            <div className="h-8 w-8 rounded-lg bg-amber-400 text-black border border-black flex items-center justify-center font-black">
+            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center font-bold shadow-clay-amber">
               <Star className="h-4 w-4" />
             </div>
             <DialogTitle>Add Master Barber</DialogTitle>
@@ -196,7 +196,7 @@ export default function TeamPage() {
 
         <form onSubmit={handleAddBarber} className="space-y-4">
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
               Full Name
             </label>
             <Input
@@ -209,7 +209,7 @@ export default function TeamPage() {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Barber Email
               </label>
               <Input
@@ -221,7 +221,7 @@ export default function TeamPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Direct Phone
               </label>
               <Input
@@ -235,13 +235,13 @@ export default function TeamPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
               Shop Authority Level
             </label>
             <select
               value={role}
               onChange={(e) => setRole(e.target.value as "barber" | "owner")}
-              className="w-full h-11 rounded-xl border-2 border-[#0F0F12] bg-white px-3 text-xs font-bold text-[#0F0F12] shadow-neo-sm focus:outline-none"
+              className="w-full h-11 rounded-2xl bg-[#EFECE6] border border-white/60 px-3 text-xs font-medium text-stone-800 shadow-[inset_2px_2px_5px_rgba(166,155,142,0.3),inset_-2px_-2px_5px_rgba(255,255,255,0.85)] focus:outline-none"
             >
               <option value="barber">Barber (Staff Station)</option>
               <option value="owner">Shop Partner / Floor Manager</option>
@@ -249,7 +249,7 @@ export default function TeamPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
               Specialties (Comma Separated)
             </label>
             <Input
@@ -269,7 +269,7 @@ export default function TeamPage() {
             >
               Cancel
             </Button>
-            <Button variant="gold" type="submit" size="sm" className="uppercase font-black">
+            <Button variant="gold" type="submit" size="sm" className="font-bold">
               Roster Member
             </Button>
           </DialogFooter>

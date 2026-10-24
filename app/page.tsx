@@ -7,7 +7,7 @@ import { LandingFooter } from "@/components/landing/footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0F0F12] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F3EFEA] text-[#1E202B] flex flex-col font-sans">
       <LandingNavbar />
       <TickerMarquee />
       <main className="flex-1">

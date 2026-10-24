@@ -51,33 +51,30 @@ export function DashboardSidebar({ className }: { className?: string }) {
   return (
     <aside
       className={cn(
-        "flex flex-col h-full w-64 border-r-2 border-[#0F0F12] bg-[#0D0D11] text-white",
+        "flex flex-col h-full w-64 bg-[#1C1D27] text-white p-3 m-3 rounded-[32px] shadow-clay-dark border border-white/10",
         className
       )}
     >
-      {/* Barber Pole Decorative Top Accent */}
-      <div className="h-2 w-full barber-pole-stripe border-b border-white/20" />
-
       {/* Brand & Salon Switcher */}
-      <div className="p-4 border-b border-white/10">
-        <div className="flex items-center gap-2.5 mb-4">
-          <div className="h-9 w-9 rounded-xl bg-amber-400 text-[#0D0D11] flex items-center justify-center font-black text-base border-2 border-white shadow-neo-sm">
-            <Scissors className="h-4 w-4" />
+      <div className="p-3 pb-4 border-b border-white/10">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-amber-950 flex items-center justify-center font-black text-base shadow-clay-amber border border-amber-200">
+            <Scissors className="h-5 w-5" />
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-lg tracking-tight uppercase leading-none text-white">
+            <span className="font-black text-lg tracking-tight text-white leading-none">
               BarberFlow
             </span>
-            <span className="text-[10px] font-black tracking-widest text-amber-400 uppercase mt-0.5">
-              Dashboard OS
+            <span className="text-[10px] font-bold tracking-wider text-amber-400 uppercase mt-0.5">
+              Clay Dashboard
             </span>
           </div>
         </div>
 
         {/* Current Tenant Card */}
-        <div className="rounded-2xl border-2 border-white/20 bg-[#18181F] p-3 shadow-neo-sm">
+        <div className="rounded-2xl bg-white/5 border border-white/10 p-3 shadow-inner">
           <div className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded-lg bg-amber-400 text-black border border-white flex items-center justify-center font-black text-xs">
+            <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 text-amber-950 flex items-center justify-center font-black text-xs shadow-clay-amber">
               <Store className="h-4 w-4" />
             </div>
             <div className="min-w-0 flex-1">
@@ -93,9 +90,9 @@ export function DashboardSidebar({ className }: { className?: string }) {
       </div>
 
       {/* Main Navigation */}
-      <nav className="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
-        <p className="px-3 pb-2 text-[10px] font-black tracking-widest uppercase text-neutral-400">
-          Management Controls
+      <nav className="flex-1 py-4 space-y-2 overflow-y-auto">
+        <p className="px-3 pb-1 text-[10px] font-extrabold tracking-wider uppercase text-neutral-400">
+          Management
         </p>
         {navItems.map((item) => {
           const isActive = item.exact
@@ -107,39 +104,39 @@ export function DashboardSidebar({ className }: { className?: string }) {
               key={item.href}
               href={item.href}
               className={cn(
-                "group flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wider transition-all",
+                "group flex items-center gap-3 rounded-2xl px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wider transition-all clay-button-press select-none",
                 isActive
-                  ? "bg-amber-400 text-[#0D0D11] border-2 border-black shadow-neo-sm font-black"
+                  ? "bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 shadow-clay-amber font-black border border-amber-300"
                   : "text-neutral-300 hover:bg-white/10 hover:text-white"
               )}
             >
               <item.icon
                 className={cn(
                   "h-4 w-4 flex-shrink-0 transition-colors",
-                  isActive ? "text-[#0D0D11]" : "text-neutral-400 group-hover:text-amber-400"
+                  isActive ? "text-amber-950" : "text-neutral-400 group-hover:text-amber-400"
                 )}
               />
               <span className="truncate">{item.name}</span>
               {isActive && (
-                <ChevronRight className="ml-auto h-4 w-4 text-[#0D0D11]" />
+                <ChevronRight className="ml-auto h-4 w-4 text-amber-950" />
               )}
             </Link>
           );
         })}
       </nav>
 
-      {/* Footer Navigation & Public Portal Link */}
-      <div className="p-3 border-t border-white/10 space-y-2">
+      {/* Footer Navigation */}
+      <div className="pt-3 border-t border-white/10 space-y-1.5">
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-bold text-neutral-300 hover:bg-white/10 hover:text-white transition-colors"
+          className="flex items-center gap-2.5 rounded-2xl px-3 py-2 text-xs font-bold text-neutral-300 hover:bg-white/10 hover:text-white transition-colors"
         >
           <ExternalLink className="h-3.5 w-3.5 text-amber-400" />
-          <span>Public Booking Page</span>
+          <span>Public Booking Site</span>
         </Link>
         <Link
           href="/login"
-          className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-bold text-red-400 hover:bg-red-950/40 transition-colors"
+          className="flex items-center gap-2.5 rounded-2xl px-3 py-2 text-xs font-bold text-rose-400 hover:bg-rose-950/40 transition-colors"
         >
           <LogOut className="h-3.5 w-3.5" />
           <span>Sign Out</span>

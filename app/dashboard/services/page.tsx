@@ -65,17 +65,17 @@ export default function ServicesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0F0F12]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black uppercase tracking-tight text-[#0F0F12]">
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
               Services &amp; Pricing Menu
             </h1>
-            <span className="text-[10px] font-black uppercase bg-amber-400 text-black px-2 py-0.5 rounded border border-black shadow-neo-sm">
+            <span className="text-[10px] font-bold uppercase bg-gradient-to-r from-amber-400 to-amber-500 text-stone-950 px-3 py-1 rounded-full shadow-clay-amber">
               6 Active Cuts
             </span>
           </div>
-          <p className="text-xs font-bold text-neutral-600 mt-1">
+          <p className="text-xs font-medium text-stone-500 mt-1">
             Curate your menu of precision haircuts, beard sculpting, hot towel rituals, and pricing.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function ServicesPage() {
           variant="gold"
           size="sm"
           onClick={() => setIsAddModalOpen(true)}
-          className="gap-2 self-start sm:self-auto uppercase font-black text-xs shadow-neo-sm"
+          className="gap-2 self-start sm:self-auto font-bold text-xs"
         >
           <Plus className="h-4 w-4 stroke-[3]" />
           <span>Add New Service</span>
@@ -92,8 +92,8 @@ export default function ServicesPage() {
       </div>
 
       {successToast && (
-        <div className="flex items-center gap-3 rounded-2xl border-2 border-black bg-emerald-300 p-3.5 text-xs font-black uppercase text-black shadow-neo">
-          <Check className="h-5 w-5 text-black stroke-[3]" />
+        <div className="flex items-center gap-3 rounded-2xl bg-emerald-100/90 text-emerald-900 p-4 text-xs font-bold shadow-clay-inset">
+          <Check className="h-5 w-5 text-emerald-700 stroke-[3]" />
           <span>{successToast}</span>
         </div>
       )}
@@ -101,7 +101,7 @@ export default function ServicesPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-neutral-500 stroke-[2.5]" />
+          <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-stone-400 stroke-[2.5]" />
           <Input
             placeholder="Search service name or description..."
             value={searchQuery}
@@ -110,15 +110,15 @@ export default function ServicesPage() {
           />
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 p-1.5 rounded-2xl bg-[#EBE5DE] shadow-clay-inset">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setCategoryFilter(cat)}
-              className={`px-3 py-1.5 text-xs rounded-xl font-black uppercase tracking-wider transition-all border-2 border-[#0F0F12] whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs rounded-xl font-bold transition-all whitespace-nowrap ${
                 categoryFilter === cat
-                  ? "bg-[#0F0F12] text-amber-400 shadow-neo-sm scale-105"
-                  : "bg-white text-[#0F0F12] hover:bg-neutral-100"
+                  ? "bg-stone-900 text-amber-400 shadow-clay-dark"
+                  : "text-stone-600 hover:text-stone-900 hover:bg-white/40"
               }`}
             >
               {cat === "all" ? "All Categories" : cat}
@@ -132,10 +132,10 @@ export default function ServicesPage() {
         {filteredServices.map((service) => (
           <div
             key={service.id}
-            className={`rounded-2xl border-2 border-[#0F0F12] p-5 bg-white shadow-neo transition-all flex flex-col justify-between ${
+            className={`rounded-3xl p-6 clay-card transition-all flex flex-col justify-between ${
               service.isActive
-                ? "hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-neo-lg"
-                : "opacity-60 bg-neutral-100"
+                ? "hover:shadow-clay-hover"
+                : "opacity-60 bg-stone-100"
             }`}
           >
             <div>
@@ -145,31 +145,31 @@ export default function ServicesPage() {
                 </Badge>
                 <button
                   onClick={() => toggleServiceStatus(service.id)}
-                  className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-black shadow-neo-sm transition-all ${
+                  className={`text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow-clay-inset transition-all ${
                     service.isActive
-                      ? "text-black bg-emerald-300 hover:bg-emerald-400"
-                      : "text-neutral-500 bg-neutral-200"
+                      ? "text-emerald-800 bg-emerald-100 hover:bg-emerald-200"
+                      : "text-stone-500 bg-stone-200"
                   }`}
                 >
                   {service.isActive ? "Live Menu" : "Archived"}
                 </button>
               </div>
 
-              <h3 className="text-lg font-black uppercase tracking-tight text-[#0F0F12]">
+              <h3 className="text-lg font-extrabold tracking-tight text-stone-900">
                 {service.name}
               </h3>
 
-              <p className="text-xs font-medium text-neutral-600 mt-2 line-clamp-2 min-h-[36px]">
+              <p className="text-xs font-medium text-stone-500 mt-2 line-clamp-2 min-h-[36px]">
                 {service.description}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 mt-4 border-t-2 border-[#0F0F12] text-xs font-bold">
-              <span className="flex items-center gap-1.5 text-neutral-700 bg-[#FAF8F5] px-2.5 py-1 rounded-lg border border-neutral-300">
+            <div className="flex items-center justify-between pt-4 mt-4 border-t border-stone-200/60 text-xs font-bold">
+              <span className="flex items-center gap-1.5 text-stone-700 clay-inset-surface px-3 py-1.5 rounded-xl">
                 <Clock className="h-3.5 w-3.5 text-amber-600 stroke-[2.5]" />
                 {service.durationMinutes} mins
               </span>
-              <span className="text-lg font-black text-[#0F0F12] bg-amber-400 px-3 py-0.5 rounded-lg border border-black shadow-neo-sm">
+              <span className="text-base font-extrabold text-stone-950 bg-gradient-to-r from-amber-400 to-amber-500 px-3.5 py-1 rounded-full shadow-clay-amber">
                 {formatCurrency(service.price)}
               </span>
             </div>
@@ -182,7 +182,7 @@ export default function ServicesPage() {
         <DialogClose onClose={() => setIsAddModalOpen(false)} />
         <DialogHeader>
           <div className="flex items-center gap-2 mb-1">
-            <div className="h-8 w-8 rounded-lg bg-amber-400 text-black border border-black flex items-center justify-center font-black">
+            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-stone-950 flex items-center justify-center font-bold shadow-clay-amber">
               <Scissors className="h-4 w-4" />
             </div>
             <DialogTitle>Add Menu Service</DialogTitle>
@@ -194,7 +194,7 @@ export default function ServicesPage() {
 
         <form onSubmit={handleAddService} className="space-y-4">
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
               Service Name
             </label>
             <Input
@@ -206,11 +206,11 @@ export default function ServicesPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
               Description &amp; Ritual Details
             </label>
             <textarea
-              className="w-full rounded-xl border-2 border-[#0F0F12] p-3 text-xs font-bold text-[#0F0F12] shadow-neo-sm focus:outline-none"
+              className="w-full rounded-2xl bg-[#EFECE6] border border-white/60 p-3.5 text-xs font-medium text-stone-800 shadow-[inset_3px_3px_7px_rgba(166,155,142,0.32),inset_-3px_-3px_7px_rgba(255,255,255,0.9)] focus:outline-none focus:ring-2 focus:ring-amber-500/50"
               rows={3}
               placeholder="Explain the consultation, cut, wash, lather, and styling..."
               value={newDescription}
@@ -221,13 +221,13 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Category
               </label>
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value as Service["category"])}
-                className="w-full h-11 rounded-xl border-2 border-[#0F0F12] bg-white px-2 text-xs font-bold text-[#0F0F12] shadow-neo-sm focus:outline-none"
+                className="w-full h-11 rounded-2xl bg-[#EFECE6] border border-white/60 px-3 text-xs font-medium text-stone-800 shadow-[inset_2px_2px_5px_rgba(166,155,142,0.3),inset_-2px_-2px_5px_rgba(255,255,255,0.85)] focus:outline-none"
               >
                 <option value="Haircut">Haircut</option>
                 <option value="Beard">Beard</option>
@@ -237,7 +237,7 @@ export default function ServicesPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Duration (min)
               </label>
               <Input
@@ -251,7 +251,7 @@ export default function ServicesPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-black uppercase tracking-wider text-[#0F0F12] mb-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
                 Price ($)
               </label>
               <Input
@@ -274,7 +274,7 @@ export default function ServicesPage() {
             >
               Cancel
             </Button>
-            <Button variant="gold" type="submit" size="sm" className="uppercase font-black">
+            <Button variant="gold" type="submit" size="sm" className="font-bold">
               Publish Service
             </Button>
           </DialogFooter>
